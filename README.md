@@ -1,10 +1,17 @@
 # dry4c
 
-Duplication analysis for **C** projects.
+`dry4c` finds normalized duplicate code in C projects with Tree-sitter tokens. It reports cross-file and non-overlapping same-file duplicates, extends matching windows to maximal blocks, and suppresses contained results.
 
 ```bash
-python -m pip install git+https://github.com/lukasa1993/dry4c.git
+pipx install git+https://github.com/lukasa1993/dry4c.git
 dry4c --min-tokens 30 --fail
 ```
 
-The tool removes comments and literal contents, normalizes identifiers and numeric values, and reports repeated token windows.
+Exit status: `0` pass, `1` analysis error, `2` duplicates found when `--fail` is active.
+
+## Development
+
+```bash
+python -m pip install -e . pytest
+pytest -q
+```
